@@ -7,7 +7,6 @@ import "draft-js/dist/Draft.css";
 function App() {
   const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
 
-  // Load saved content from localStorage on page load
   useEffect(() => {
     const savedData = localStorage.getItem("editorContent");
     if (savedData) {
@@ -16,7 +15,6 @@ function App() {
     }
   }, []);
 
-  // Save content to localStorage
   const handleSave = () => {
     const contentState = editorState.getCurrentContent();
     const rawContent = convertToRaw(contentState);
@@ -24,7 +22,6 @@ function App() {
     alert("Content saved!");
   };
 
-  // Handle custom key commands for formatting
   const handleKeyCommand = (command) => {
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
@@ -34,14 +31,12 @@ function App() {
     return "not-handled";
   };
 
-  // Handle custom logic for '#' and '*'
   const handleBeforeInput = (chars) => {
     const currentContent = editorState.getCurrentContent();
     const selection = editorState.getSelection();
     const block = currentContent.getBlockForKey(selection.getStartKey());
     const blockText = block.getText();
 
-    // Logic for formatting
     if (blockText === "#" && chars === " ") {
       setEditorState(RichUtils.toggleBlockType(editorState, "header-one"));
       return "handled";
@@ -61,19 +56,20 @@ function App() {
     return "not-handled";
   };
 
-  // Map custom inline styles
   const styleMap = {
     RED: { color: "red" },
     UNDERLINE: { textDecoration: "underline" },
   };
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial" }}>
-      <h2 style={{textAlign:"center"}}>Demo Editor by YourName</h2>
-      <button onClick={handleSave} style={{ marginBottom: "10px" }}>
-        Save
-      </button>
-      <div style={{ border: "1px solid #ccc", minHeight: "300px", padding: "10px" }}>
+    <div className="editor-container">
+      <header className="header">
+        <h2 className="title">Demo Editor by Hafija</h2>
+        <button className="save-button" onClick={handleSave}>
+          Save
+        </button>
+      </header>
+      <div className="editor-wrapper">
         <Editor
           editorState={editorState}
           onChange={setEditorState}

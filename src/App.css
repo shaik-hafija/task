@@ -1,15 +1,63 @@
-button {
+.editor-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  flex: 1;
+}
+
+.save-button {
   background-color: #007bff;
   color: white;
   border: none;
   padding: 10px 15px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-button:hover {
+.save-button:hover {
   background-color: #0056b3;
 }
 
-h2 {
-  text-align: center;
+/* Editor Wrapper */
+.editor-wrapper {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  min-height: 300px;
+  cursor: text;
+}
+
+.public-DraftStyleDefault-block {
+  margin: 0;
+}
+
+.public-DraftStyleDefault-headerOne {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.public-DraftStyleDefault-inlineStyleBold {
+  font-weight: bold;
+}
+
+.public-DraftStyleDefault-inlineStyleUnderline {
+  text-decoration: underline;
+}
+
+.public-DraftStyleDefault-inlineStyleRed {
+  color: red;
 }
